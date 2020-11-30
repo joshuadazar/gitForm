@@ -1,0 +1,8 @@
+.btn-edit {
+  transform: translateY(-5px);
+}
+
+input:not(:placeholder-shown) + label {
+  transform: translateY(-14px) scale(0.8);
+  transform-origin: 0 0;
+}

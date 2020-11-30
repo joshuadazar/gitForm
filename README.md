@@ -1,8 +1,4 @@
-# GitHub Manager
-
-## General Description
-
-This app allow Create, search and list Github Users in a SPA .
+# Crud
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 

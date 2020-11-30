@@ -1,5 +1,10 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
 import * as M from 'materialize-css';
+// Import the AuthService type from the SDK
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
+
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,16 +12,22 @@ import * as M from 'materialize-css';
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('sideNav') sideNav: any;
-
-  constructor() { }
+  user: any = { name: "", picture: "", email: "" };
+  constructor(
+    @Inject(DOCUMENT) public document: Document, public auth: AuthService
+  ) { }
 
   ngOnInit(): void {
-
+    this.auth.user$.subscribe((usr) => {
+      console.log(usr, 'este es el usuario');
+      this.user = usr;
+    });
   }
 
   ngAfterViewInit() {
-    console.log(this.sideNav);
     let instance = M.Sidenav.init(this.sideNav.nativeElement, { edge: 'left' });
   }
+
+
 
 }

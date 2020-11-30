@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="container">
+  <form [formGroup]="userForm">
+    <div class="section"></div>
+    <div class="input-field col s12 l6">
+      <input type="text" id="primer_nombre" class="validate" formControlName="name" placeholder=" ">
+      <label for="primer_nombre">Primer Nombre</label>
+    </div>
+    <div class="input-field col s12 l6">
+      <input type="text" id="segundo_nombre" class="validate" placeholder=" ">
+      <label for="segundo_nombre">Segundo Nombre</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="email" id="email" class="validate" formControlName="email" placeholder=" ">
+      <label for="email" data-error="Correo Inválido" data-success="Correcto">Email</label>
+    </div>
+    <div class="input-field col s12">
+      <textarea id="mensaje" class="materialize-textarea"></textarea>
+      <label for="mensaje">Mensaje</label>
+    </div>
+    <button class="btn waves-effect  brown darken-4" type="submit" name="action" (click)="updateUser()">Enviar
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>
+
+<div class="section"></div>
+<div class="container">
+  <ul class="collection">
+    <li class="collection-item">estos son los usuarios</li>
+    <li class="collection-item" *ngFor="let user of users; let i=index">{{user.name}} <a
+        class="secondary-content waves-effect btn btn-small brown darken-4white-text btn-edit"
+        (click)="editUser(i)">Editar</a>
+    </li>
+  </ul>
+</div>

@@ -1,19 +1,26 @@
- <nav>
-    <div class="nav-wrapper black">
-      <a href="#!" class="brand-logo">S4N APP </a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav>
+  <div class="nav-wrapper black">
+    <a class="brand-logo">S4N APP </a>
+    <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
 
-  <ul class="sidenav" #sideNav id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
-  </ul>
+      <li><a routerLink="login">Inicio</a></li>
+      <li *ngIf="user.name"><a routerLink="users">Panel usuarios</a></li>
+      <li *ngIf="user.name">
+        <a><img class="left" [src]="user.picture" width="24px" [attr.alt]="user.email"> {{user.given_name}}</a>
+      </li>
+      <li *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <a (click)="auth.logout({ returnTo: document.location.origin })">Cerrar Sesion</a>
+      </li>
+
+      <ng-template #loggedOut>
+        <li><a (click)="auth.loginWithRedirect()">Iniciar Sesion</a></li>
+      </ng-template>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" #sideNav id="mobile-demo">
+  <li><a routerLink="users">Panel usuarios</a></li>
+  <li><a routerLink="login">Iniciar Sesion</a></li>
+</ul>
