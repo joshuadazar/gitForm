@@ -13,6 +13,7 @@ import { DOCUMENT } from '@angular/common';
 export class HeaderComponent implements OnInit {
   @ViewChild('sideNav') sideNav: any;
   user: any = { name: "", picture: "", email: "" };
+  userExist: boolean = true;
   constructor(
     @Inject(DOCUMENT) public document: Document, public auth: AuthService
   ) { }
@@ -22,6 +23,9 @@ export class HeaderComponent implements OnInit {
       console.log(usr, 'este es el usuario');
       this.user = usr;
     });
+  }
+  userListToggle() {
+    this.userExist = !this.userExist;
   }
 
   ngAfterViewInit() {

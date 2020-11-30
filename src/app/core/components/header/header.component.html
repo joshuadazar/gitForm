@@ -1,3 +1,10 @@
+<!-- Dropdown Structure -->
+<ul *ngIf="userExist" class="collection white">
+  <li class="collection-item white">Jose</li>
+  <li class="collection-item white">Jonathan</li>
+  <li class="collection-item white">Moreno</li>
+  <li class="collection-item white">Castro</li>
+</ul>
 <nav>
   <div class="nav-wrapper black">
     <a class="brand-logo">S4N APP </a>
@@ -5,9 +12,12 @@
     <ul class="right hide-on-med-and-down">
 
       <li><a routerLink="login">Inicio</a></li>
+      <li><a class="dropdown-trigger" (click)="userListToggle()">User Info<i
+            class="material-icons right">arrow_drop_down</i></a></li>
+
       <li *ngIf="user.name"><a routerLink="users">Panel usuarios</a></li>
       <li *ngIf="user.name">
-        <a><img class="left" [src]="user.picture" width="24px" [attr.alt]="user.email"> {{user.given_name}}</a>
+        <a><img class="left" [src]="user.picture" width="24px" [attr.alt]="user.email"> {{user.nickname}}</a>
       </li>
       <li *ngIf="auth.isAuthenticated$ | async; else loggedOut">
         <a (click)="auth.logout({ returnTo: document.location.origin })">Cerrar Sesion</a>

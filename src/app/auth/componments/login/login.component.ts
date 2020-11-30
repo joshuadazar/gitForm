@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    //this.getUsers();
   }
 
   getUsers() {
