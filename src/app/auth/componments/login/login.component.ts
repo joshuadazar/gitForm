@@ -10,53 +10,44 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  // name: FormControl = new FormControl("", Validators.required);
-  // email: FormControl = new FormControl("", Validators.required);
   userForm: FormGroup = new FormGroup({
-    fullName: new FormControl("", Validators.required),
-    dni: new FormControl("", [Validators.required, Validators.email]),
-    birthday: new FormControl("", [Validators.required, Validators.email]),
-    email: new FormControl("", [Validators.required, Validators.email]),
-    github: new FormControl("", [Validators.required, Validators.email]),
+    fullName: new FormControl("", [Validators.required, Validators.minLength(1)]),
+    dni: new FormControl("", [Validators.required, Validators.minLength(1)]),
+    birthday: new FormControl("", [Validators.required, Validators.minLength(1)]),
+    email: new FormControl("", [Validators.required, Validators.minLength(1)]),
+    github: new FormControl("", [Validators.required, Validators.minLength(1)]),
   });
-  users: Iuser[] = []
+  users: Iuser[] = [];
+  completedFormFields: boolean = false;
   constructor(
     private userService: UserService
   ) { }
 
   ngOnInit(): void {
-    //this.getUsers();
   }
 
-  // getUsers() {
-  //   this.userService.getUsers().subscribe((users: Iuser[]) => {
-  //     this.users = users;
-  //     console.log(this.users);
-
-  //   })
-  // }
-
-  editUser(userID: number) {
-    this.userForm.setValue({
-      name: this.users[userID].name,
-      email: this.users[userID].email
-
-    });
+  validateInputFileds() {
+    let datos = Object.values(this.userForm.value).some(item => item === "" ? true : false);
+    this.completedFormFields = datos;
+    return datos
   }
 
   createUser() {
-    this.deleteCoockies()
-    this.users.push(this.userForm.value)
-    console.log(this.users);
-    let expires = new Date();
-    expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
-    document.cookie = `name=${this.userForm.value.fullName}; expires=${expires}; path=/`;
-    document.cookie = `dni=${this.userForm.value.dni}; expires=${expires}; path=/`;
-    document.cookie = `birthday=${this.userForm.value.birthday}; expires=${expires}; path=/`;
-    document.cookie = `email=${this.userForm.value.email}; expires=${expires}; path=/`;
-    document.cookie = `github=${this.userForm.value.github}; expires=${expires}; path=/`;
-    this.userService.setUserCookies(true);
+    if (!this.validateInputFileds()) {
 
+      this.validateInputFileds()
+      this.deleteCoockies()
+      this.users.push(this.userForm.value)
+      let expires = new Date();
+      expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+      document.cookie = `name=${this.userForm.value.fullName}; expires=${expires}; path=/`;
+      document.cookie = `dni=${this.userForm.value.dni}; expires=${expires}; path=/`;
+      document.cookie = `birthday=${this.userForm.value.birthday}; expires=${expires}; path=/`;
+      document.cookie = `email=${this.userForm.value.email}; expires=${expires}; path=/`;
+      document.cookie = `github=${this.userForm.value.github}; expires=${expires}; path=/`;
+      this.userService.setUserCookies(true);
+      M.toast({ html: '☝ User Created !!' })
+    }
   }
 
   deleteCoockies() {

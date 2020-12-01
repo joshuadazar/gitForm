@@ -28,7 +28,7 @@ export class AppComponent {
       this.userCached = user
       this.userService.getUsers(user.trim()).subscribe(data => {
         this.userResponse = data;
-        console.log(data);
+        // console.log(data);
       });
     }
   }

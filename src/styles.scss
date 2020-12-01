@@ -32,3 +32,9 @@ body {
 .ng2-smart-title ng2-smart-table-title > a {
   color: #3e2723;
 }
+
+th:not(:nth-child(1)) {
+  input {
+    display: none;
+  }
+}
