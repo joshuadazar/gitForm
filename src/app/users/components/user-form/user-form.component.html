@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col s6 offset-s6 ">
+
+    <ul *ngIf="user.name" class="collection white">
+      <li style="text-transform:Capitalize;" class="collection-item white"><strong>FullName:</strong> {{this.user.name}}
+      </li>
+      <li class="collection-item white"><strong>Nickname:</strong> {{this.user.nickname}}</li>
+      <li class="collection-item white"><strong>Last updated info:</strong> {{this.user.updated_at}}</li>
+      <li class="collection-item white"><strong>Email:</strong> {{this.user.email}}</li>
+    </ul>
+  </div>
+</div>

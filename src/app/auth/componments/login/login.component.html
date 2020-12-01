@@ -1,0 +1,55 @@
+<div class="section"></div>
+<h5 class="center">Create Github User (local)</h5>
+<div class="section"></div>
+<div class="container ">
+  <form autocomplete="off" [formGroup]="userForm">
+    <div class="section"></div>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="text" required id="fullName" class="validate" placeholder=" " autofocus formControlName="fullName">
+        <label for="fullName">FullName</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="text" required id="dni" class="validate" placeholder=" " formControlName="dni">
+        <label for="dni">DNI</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">cake</i>
+        <input type="date" required id="birthday" class="validate" placeholder=" " formControlName="birthday">
+        <label for="birthday" data-error="select date" data-success="Correcto">Birthday</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">contact_mail</i>
+        <input type="email" required id="email" class="validate" placeholder=" " formControlName="email">
+        <label for="email" data-error="Correo Inválido" data-success="Correcto">Email</label>
+      </div>
+    </div>
+
+    <div class="input-field col s12 m6">
+      <i class="material-icons prefix">work</i>
+      <input type="text" required id="github" class="validate" placeholder=" " formControlName="github">
+      <label for="github" data-error="usuario" data-success="Correcto">Github User</label>
+    </div>
+    <div class="row">
+      <div class="input-field col s3">
+        <button class="btn waves-effect  brown darken-4" type="submit" name="action" (click)="createUser()">Create User
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+      <div *ngIf="completedFormFields" class="input-field col s6">
+        <div class="red-text"><i class="material-icons">error</i> Please complete required fields </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+<div class="section"></div>
+<div class="container">
+  <app-user-table></app-user-table>
+</div>

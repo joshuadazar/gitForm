@@ -1,0 +1,48 @@
+<!-- Dropdown Structure -->
+
+<div *ngIf="userExist" class="collection-background" (click)="userListToggle()"></div>
+<ul *ngIf="userExist" class="collection white" [ngClass]="{'push-rigth': user.name}">
+  <li class="collection-item white"><strong>FullName:</strong> {{this.userCoockie.name}}</li>
+  <li class="collection-item white"><strong>DNI:</strong> {{this.userCoockie.dni}}</li>
+  <li class="collection-item white"><strong>Birthday:</strong> {{this.userCoockie.birthday}}</li>
+  <li class="collection-item white"><strong>Email:</strong> {{this.userCoockie.email}}</li>
+  <li class="collection-item white"><strong>Github User: </strong>{{this.userCoockie.github}}</li>
+</ul>
+<nav>
+  <div class="nav-wrapper black">
+    <a class="brand-logo">S4N APP </a>
+    <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+
+      <li><a routerLink="login">Create Github user</a></li>
+      <li *ngIf="newUserState"><a class="dropdown-trigger" (click)="userListToggle()">Last created user Info<i
+            class="material-icons right">arrow_drop_down</i></a>
+      </li>
+
+      <li *ngIf="user.name"><a routerLink="users">My Github</a></li>
+      <li *ngIf="user.name">
+        <a><img class="left" [src]="user.picture" width="24px" [attr.alt]="user.email"> {{user.nickname}}</a>
+      </li>
+      <li *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <a (click)="auth.logout({ returnTo: document.location.origin })">Cerrar Sesion</a>
+      </li>
+
+      <ng-template #loggedOut>
+        <li><a (click)="auth.loginWithRedirect()">Iniciar Sesion</a></li>
+      </ng-template>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" #sideNav id="mobile-demo">
+  <li class="collection-item active"><a routerLink=" users"> Created user info</a></li>
+  <li class="collection-item">
+    <div class="section"></div>
+  </li>
+
+  <li class="collection-item white"><a><strong>FullName:</strong> {{this.userCoockie.name}}</a></li>
+  <li class="collection-item white"><a><strong>DNI:</strong> {{this.userCoockie.dni}}</a></li>
+  <li class="collection-item white"><a><strong>Birthday:</strong> {{this.userCoockie.birthday}}</a></li>
+  <li class="collection-item white"><a><strong>Email:</strong> {{this.userCoockie.email}}</a></li>
+  <li class="collection-item white"><a><strong>Github User: </strong>{{this.userCoockie.github}}</a></li>
+</ul>
