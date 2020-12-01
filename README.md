@@ -7,9 +7,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 For CSS Layout define Materializecss library (https://materializecss.com/)
 
-## Technical References
+## Functional Description
 
-This app contains all requested features in challenge description.
+This app contains all requested features in challenge description (points 1,2,3).
 (Extra features)
 * User Authentication (Google, Github and personal email)
 * Responsive layout for mobile (partial)
