@@ -1,3 +1,4 @@
+![alt text](https://www.s4n.co/logo.svg)
 # Github Manager
 
 ## Technical References
