@@ -2,11 +2,20 @@ img {
   margin: 22px 10px;
   border-radius: 50%;
 }
-
+.collection-background {
+  z-index: 9;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+}
 ul.collection {
   position: absolute;
   top: 60px;
   right: 12vw;
   z-index: 10;
   background: white;
+}
+.push-rigth {
+  right: 28vw !important;
 }

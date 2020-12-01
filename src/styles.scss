@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/scss/typography-mixins';
+@import "./assets/scss/typography-mixins";
 
 app-root {
   display: flex;
@@ -9,4 +9,26 @@ app-root {
 
 router-outlet + * {
   flex: 1 0 auto;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+//ng2-smart-table
+.ng2-smart-pagination-nav {
+  background: white !important;
+}
+
+.pagination li.active {
+  background-color: #3e2723;
+  height: 64px;
+  width: 50px;
+}
+.ng2-smart-title ng2-smart-table-title > a {
+  color: #3e2723;
 }

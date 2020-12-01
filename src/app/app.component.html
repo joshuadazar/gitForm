@@ -1,3 +1,23 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
+<div class="divider"></div>
+<h5 class="center">Github Repository Finder</h5>
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="gitUser" type="text" class="validate" #gitUser>
+        <label for="gitUser">Find user repositories (user name)</label>
+        <a class=" btn brown darken-4 white-text" (click)="getUserRepos(gitUser.value)">Search Repos</a>
+        <!-- <span class="helper-text" data-error="wrong" data-success="right">Helper text</span> -->
+      </div>
+    </div>
+  </form>
+</div>
+<div class="section"></div>
+<div class="container">
+
+  <ng2-smart-table [settings]="settings" [source]="userResponse"></ng2-smart-table>
+</div>
+<div class="section"></div>
 <app-footer></app-footer>
