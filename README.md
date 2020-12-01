@@ -6,6 +6,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 For CSS Layout define Materializecss library (https://materializecss.com/)
 
+## Technical References
+
+This app contains all requested features in challenge description.
+(Extra features)
+* User Authentication (Google, Github and personal email)
+* Responsive layout for mobile (partial)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
