@@ -15,8 +15,9 @@
     <ul class="right hide-on-med-and-down">
 
       <li><a routerLink="login">Create Github user</a></li>
-      <li><a class="dropdown-trigger" (click)="userListToggle()">Last created user Info<i
-            class="material-icons right">arrow_drop_down</i></a></li>
+      <li *ngIf="newUserState"><a class="dropdown-trigger" (click)="userListToggle()">Last created user Info<i
+            class="material-icons right">arrow_drop_down</i></a>
+      </li>
 
       <li *ngIf="user.name"><a routerLink="users">My Github</a></li>
       <li *ngIf="user.name">
@@ -34,6 +35,14 @@
 </nav>
 
 <ul class="sidenav" #sideNav id="mobile-demo">
-  <li><a routerLink="users">Panel usuarios</a></li>
-  <li><a routerLink="login">Iniciar Sesion</a></li>
+  <li class="collection-item active"><a routerLink=" users"> Created user info</a></li>
+  <li class="collection-item">
+    <div class="section"></div>
+  </li>
+
+  <li class="collection-item white"><a><strong>FullName:</strong> {{this.userCoockie.name}}</a></li>
+  <li class="collection-item white"><a><strong>DNI:</strong> {{this.userCoockie.dni}}</a></li>
+  <li class="collection-item white"><a><strong>Birthday:</strong> {{this.userCoockie.birthday}}</a></li>
+  <li class="collection-item white"><a><strong>Email:</strong> {{this.userCoockie.email}}</a></li>
+  <li class="collection-item white"><a><strong>Github User: </strong>{{this.userCoockie.github}}</a></li>
 </ul>

@@ -28,11 +28,11 @@ export class AppComponent {
       this.userCached = user
       this.userService.getUsers(user.trim()).subscribe(data => {
         this.userResponse = data;
-        // console.log(data);
       });
     }
   }
 
+  // thead Info (data table)
   settings = {
     columns: {
       git_url: {

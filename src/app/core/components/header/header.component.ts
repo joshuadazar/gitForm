@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   userCoockie: Iuser = {}
   user: any = { name: "", picture: "", email: "" };
   userExist: boolean = false;
+  newUserState: boolean = false;
   constructor(
     @Inject(DOCUMENT) public document: Document,
     public auth: AuthService,
@@ -25,17 +26,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.user$.subscribe((usr) => {
-      console.log(usr, 'este es el usuario');
       this.user = usr;
     });
     this.watchUserCookies();
     this.getUserCookies();
   }
-
+  // Observable if user was created
   watchUserCookies() {
     this.userService.watchUserCookies().subscribe(res => {
       if (res === true) {
-        console.log(res, 'rspuesta de usuario cambiado');
+        this.newUserState = res;
         this.getUserCookies();
       }
     })
@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    // Materializecss intance for mobile menu
     let instance = M.Sidenav.init(this.sideNav.nativeElement, { edge: 'left' });
   }
 
